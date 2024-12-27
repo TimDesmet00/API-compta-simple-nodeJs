@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // ajout des routes pour les fonction CRUD
 
-// app.use("/comm", require("./router/comm.router"))
+app.use("/client", require("./Router/client.router"));
 
 app.listen(port, () => {
   console.log(`Le server est démarré sur le port: ${port}`);
