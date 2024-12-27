@@ -70,7 +70,7 @@ const getClientById = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error("Error retrieving client", error);
+    // console.error("Error retrieving client", error);
     res.status(500).json({
       status: "fail",
       message: error.message || "An error occurred while retrieving client.",
@@ -107,7 +107,7 @@ const updateClient = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error("Error updating client", error);
+    // console.error("Error updating client", error);
     res.status(500).json({
       status: "fail",
       message: error.message || "An error occurred while updating client.",
@@ -132,7 +132,7 @@ const deleteClient = async (req, res) => {
       data: null,
     });
   } catch (error) {
-    console.error("Error deleting client", error);
+    // console.error("Error deleting client", error);
     res.status(500).json({
       status: "fail",
       message: error.message || "An error occurred while deleting client.",
