@@ -21,6 +21,10 @@ const ClientSchema = new mongoose.Schema({
     type: String,
     required: [true, "Une ville est requise"],
   },
+  pays: {
+    type: String,
+    required: [true, "Un pays est requis"],
+  },
   tva: {
     type: String,
     required: false,
