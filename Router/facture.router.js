@@ -9,3 +9,5 @@ router.get("/getclient/:id", factureController.getFactureByClient);
 router.get("/gatuser/:id", factureController.getFactureByUser);
 router.patch("/update/:id", factureController.updateFacture);
 router.delete("/delete/:id", factureController.deleteFacture);
+
+module.exports = router;
