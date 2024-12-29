@@ -12,10 +12,12 @@ const FactureSchema = new mongoose.Schema({
   client: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "client",
+    required: true,
   },
-  moi: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "moi",
+    ref: "user",
+    required: true,
   },
   totalHT: {
     type: Number,
