@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // ajout des routes
 app.use("/client", require("./Router/client.router"));
+app.use("/facture", require("./Router/facture.router"));
 
 app.listen(port, () => {
   console.log(`Le server est démarré sur le port: ${port}`);
