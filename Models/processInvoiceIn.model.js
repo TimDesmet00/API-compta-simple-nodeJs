@@ -26,7 +26,7 @@ const ProcessInvoiceInSchema = new mongoose.Schema({
           ref: "supplier",
           required: true,
         },
-        totalTVAC: {
+        prixTVAC: {
           type: Number,
           required: true,
         },
@@ -52,6 +52,26 @@ const ProcessInvoiceInSchema = new mongoose.Schema({
         },
       },
     ],
+    totalTVAC: {
+      type: Number,
+      required: true,
+    },
+    totalMarch: {
+      type: Number,
+      required: true,
+    },
+    totalCharges: {
+      type: Number,
+      required: true,
+    },
+    totalInvest: {
+      type: Number,
+      required: true,
+    },
+    totalDeductibleTVA: {
+      type: Number,
+      required: true,
+    },
   },
 });
 
