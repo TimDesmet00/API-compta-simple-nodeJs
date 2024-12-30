@@ -26,7 +26,7 @@ const ProcessInvoiceOutSchema = new mongoose.Schema({
           ref: "client",
           required: true,
         },
-        totalTVAC: {
+        prixTVAC: {
           type: Number,
           required: true,
         },

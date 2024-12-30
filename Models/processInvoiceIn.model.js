@@ -50,28 +50,28 @@ const ProcessInvoiceInSchema = new mongoose.Schema({
           type: Number,
           required: true,
         },
+        totalTVAC: {
+          type: Number,
+          required: true,
+        },
+        totalMarch: {
+          type: Number,
+          required: true,
+        },
+        totalCharges: {
+          type: Number,
+          required: true,
+        },
+        totalInvest: {
+          type: Number,
+          required: true,
+        },
+        totalDeductibleTVA: {
+          type: Number,
+          required: true,
+        },
       },
     ],
-    totalTVAC: {
-      type: Number,
-      required: true,
-    },
-    totalMarch: {
-      type: Number,
-      required: true,
-    },
-    totalCharges: {
-      type: Number,
-      required: true,
-    },
-    totalInvest: {
-      type: Number,
-      required: true,
-    },
-    totalDeductibleTVA: {
-      type: Number,
-      required: true,
-    },
   },
 });
 
