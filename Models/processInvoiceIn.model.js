@@ -73,6 +73,10 @@ const ProcessInvoiceInSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  closed: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("processInvoiceIn", ProcessInvoiceInSchema);
