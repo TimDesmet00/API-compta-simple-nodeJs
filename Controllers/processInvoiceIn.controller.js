@@ -114,6 +114,34 @@ const updateProcessInvoiceIn = async (req, res) => {
   }
 };
 
+const updateAndCloseProcessInvoiceIn = async (req, res) => {
+  if (!req.body) {
+    return res.status(400).send({
+      message: "Data to update can not be empty!",
+    });
+  }
+
+  try {
+    const processInvoiceIn = await processInvoiceIn.findByIdAndUpdate(
+      req.params.id,
+      { ...req.body, closed: true },
+      { useFindAndModify: false }
+    );
+    if (!processInvoiceIn) {
+      return res.status(404).send({
+        message: `Cannot update processInvoiceIn with id=${req.params.id}. Maybe processInvoiceIn was not found!`,
+      });
+    }
+    res.status(200).send({
+      message: "ProcessInvoiceIn was updated and closed successfully.",
+    });
+  } catch (error) {
+    res.status(500).send({
+      message: "Error updating processInvoiceIn with id=" + req.params.id,
+    });
+  }
+};
+
 const deleteProcessInvoiceIn = async (req, res) => {
   try {
     const processInvoiceIn = await processInvoiceIn.findByIdAndRemove(
