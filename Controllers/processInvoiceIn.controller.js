@@ -186,5 +186,6 @@ module.exports = {
   getAllProcessInvoiceIn,
   getProcessInvoiceInById,
   updateProcessInvoiceIn,
+  updateAndCloseProcessInvoiceIn,
   deleteProcessInvoiceIn,
 };
