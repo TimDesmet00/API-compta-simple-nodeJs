@@ -94,6 +94,22 @@ const updateProcessInvoiceIn = async (req, res) => {
   }
 
   try {
+    const existingProcessInvoiceIn = await ProcessInvoiceIn.findById(
+      req.params.id
+    );
+    if (!existingProcessInvoiceIn) {
+      return res.status(404).send({
+        message: `Cannot update processInvoiceIn with id=${req.params.id}. Maybe processInvoiceIn was not found!`,
+      });
+    }
+
+    // Vérifier si l'entrée est fermée
+    if (existingProcessInvoiceIn.closed) {
+      return res.status(400).send({
+        message: "Cannot update a closed processInvoiceIn.",
+      });
+    }
+
     const processInvoiceIn = await processInvoiceIn.findByIdAndUpdate(
       req.params.id,
       req.body,
