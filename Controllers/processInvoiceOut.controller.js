@@ -38,3 +38,54 @@ const createProcessInvoiceOut = async (req, res) => {
     });
   }
 };
+
+const getAllProcessInvoiceOut = async (req, res) => {
+  try {
+    const processInvoiceOut = await ProcessInvoiceOut.find().populate(
+      "supplier"
+    );
+    res.status(200).json({
+      status: "success",
+      results: processInvoiceOut.length,
+      data: {
+        processInvoiceOut,
+      },
+    });
+  } catch (error) {
+    console.error("Error retrieving processInvoiceOut", error);
+    res.status(500).json({
+      status: "fail",
+      message:
+        error.message ||
+        "An error occurred while retrieving processInvoiceOut.",
+    });
+  }
+};
+
+const getProcessInvoiceOutById = async (req, res) => {
+  try {
+    const processInvoiceOut = await ProcessInvoiceOut.findById(
+      req.params.id
+    ).populate("supplier");
+    if (!processInvoiceOut) {
+      return res.status(404).json({
+        status: "fail",
+        message: "No processInvoiceOut found with that ID",
+      });
+    }
+    res.status(200).json({
+      status: "success",
+      data: {
+        processInvoiceOut,
+      },
+    });
+  } catch (error) {
+    console.error("Error retrieving processInvoiceOut", error);
+    res.status(500).json({
+      status: "fail",
+      message:
+        error.message ||
+        "An error occurred while retrieving processInvoiceOut.",
+    });
+  }
+};
