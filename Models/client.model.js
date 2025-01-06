@@ -1,35 +1,35 @@
 const mongoose = require("mongoose");
 
 const ClientSchema = new mongoose.Schema({
-  nom: {
+  name: {
     type: String,
     required: [true, "Un nom est requis"],
   },
-  rue: {
+  address: {
     type: String,
     required: [true, "Une rue est requise"],
   },
-  numero: {
+  number: {
     type: Number,
     required: [true, "Un numéro est requis"],
   },
-  cp: {
+  zipcode: {
     type: Number,
     required: [true, "Un code postal est requis"],
   },
-  ville: {
+  city: {
     type: String,
     required: [true, "Une ville est requise"],
   },
-  pays: {
+  country: {
     type: String,
     required: [true, "Un pays est requis"],
   },
-  tva: {
+  vat: {
     type: String,
     required: false,
   },
-  telephone: {
+  phone: {
     type: String,
     required: [true, "Un numéro de téléphone est requis"],
   },
@@ -43,11 +43,11 @@ const ClientSchema = new mongoose.Schema({
       message: (props) => `${props.value} n'est pas une adresse email valide!`,
     },
   },
-  banque: {
+  banq: {
     type: String,
     required: false,
   },
-  factures: [
+  invoices: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "facture",

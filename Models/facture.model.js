@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const FactureSchema = new mongoose.Schema({
-  numero: {
+  number: {
     type: Number,
     required: true,
   },
@@ -31,7 +31,7 @@ const FactureSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  lignes: [
+  raw: [
     {
       description: {
         type: String,
