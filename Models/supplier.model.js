@@ -28,6 +28,12 @@ const SupplierSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    validate: {
+      validator: function (v) {
+        return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(v);
+      },
+      message: (props) => `${props.value} is not a valid email!`,
+    },
   },
   bank: {
     type: String,
@@ -35,4 +41,5 @@ const SupplierSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Supplier", SupplierSchema);
+module.exports =
+  mongoose.models.Supplier || mongoose.model("Supplier", SupplierSchema);

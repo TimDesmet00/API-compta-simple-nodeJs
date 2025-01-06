@@ -1,6 +1,5 @@
 const ProcessInvoiceOut = require("../models/processInvoiceOut.model.js");
 const Supplier = require("../models/supplier.model.js");
-const validator = require("validator");
 
 const createProcessInvoiceOut = async (req, res) => {
   // vérifier que la requête n'est pas vide
