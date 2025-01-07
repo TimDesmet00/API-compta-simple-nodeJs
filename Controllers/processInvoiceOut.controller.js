@@ -1,5 +1,5 @@
 const ProcessInvoiceOut = require("../models/processInvoiceOut.model.js");
-const Supplier = require("../models/supplier.model.js");
+const Client = require("../Models/client.model.js");
 
 const createProcessInvoiceOut = async (req, res) => {
   // vérifier que la requête n'est pas vide
@@ -40,9 +40,7 @@ const createProcessInvoiceOut = async (req, res) => {
 
 const getAllProcessInvoiceOut = async (req, res) => {
   try {
-    const processInvoiceOut = await ProcessInvoiceOut.find().populate(
-      "supplier"
-    );
+    const processInvoiceOut = await ProcessInvoiceOut.find().populate("client");
     res.status(200).json({
       status: "success",
       results: processInvoiceOut.length,
