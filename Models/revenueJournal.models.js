@@ -15,6 +15,38 @@ const RevenueJournalSchema = new mongoose.Schema({
         type: Number,
         required: false,
       },
+      "6%": {
+        type: Number,
+        required: false,
+      },
+      "12%": {
+        type: Number,
+        required: false,
+      },
+      "21%": {
+        type: Number,
+        required: false,
+      },
     },
   ],
+  receipt: [
+    {
+      cash: {
+        type: Number,
+        required: false,
+      },
+      card: {
+        type: Number,
+        required: false,
+      },
+      transfer: {
+        type: Number,
+        required: false,
+      },
+    },
+  ],
+  receiptNumber: {
+    type: Number,
+    required: false,
+  },
 });
