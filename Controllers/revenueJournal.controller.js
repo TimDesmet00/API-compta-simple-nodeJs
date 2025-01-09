@@ -51,7 +51,7 @@ const getAllRevenueJournal = async (req, res) => {
   }
 };
 
-getrevenueJournalByDate = async (req, res) => {
+const getrevenueJournalByDate = async (req, res) => {
   try {
     const revenueJournal = await RevenueJournal.findOne({
       date: req.params.date,
@@ -76,4 +76,69 @@ getrevenueJournalByDate = async (req, res) => {
         "An error occurred while retrieving the revenue journal.",
     });
   }
+};
+
+const updateRevenueJournal = async (req, res) => {
+  try {
+    const revenueJournal = await RevenueJournal.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    if (!revenueJournal) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Revenue journal not found",
+      });
+    }
+    res.status(200).json({
+      status: "success",
+      data: {
+        revenueJournal,
+      },
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message:
+        error.message ||
+        "An error occurred while updating the revenue journal.",
+    });
+  }
+};
+
+const deleteRevenueJournal = async (req, res) => {
+  try {
+    const revenueJournal = await RevenueJournal.findByIdAndDelete(
+      req.params.id
+    );
+    if (!revenueJournal) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Revenue journal not found",
+      });
+    }
+    res.status(204).json({
+      status: "success",
+      data: null,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message:
+        error.message ||
+        "An error occurred while deleting the revenue journal.",
+    });
+  }
+};
+
+module.exports = {
+  createRevenueJournal,
+  getAllRevenueJournal,
+  getrevenueJournalByDate,
+  updateRevenueJournal,
+  deleteRevenueJournal,
 };
