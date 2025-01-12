@@ -51,7 +51,7 @@ const getAllRevenueJournal = async (req, res) => {
   }
 };
 
-const getrevenueJournalByDate = async (req, res) => {
+const getRevenueJournalByDate = async (req, res) => {
   try {
     const revenueJournal = await RevenueJournal.findOne({
       date: req.params.date,
@@ -138,7 +138,7 @@ const deleteRevenueJournal = async (req, res) => {
 module.exports = {
   createRevenueJournal,
   getAllRevenueJournal,
-  getrevenueJournalByDate,
+  getRevenueJournalByDate,
   updateRevenueJournal,
   deleteRevenueJournal,
 };
