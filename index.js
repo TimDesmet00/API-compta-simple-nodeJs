@@ -14,6 +14,7 @@ app.use("/client", require("./Router/client.router"));
 app.use("/facture", require("./Router/facture.router"));
 app.use("/processInvoiceIn", require("./Router/processInvoiceIn.router"));
 app.use("/processInvoiceOut", require("./Router/processInvoiceOut.router"));
+app.use("/revenueJournal", require("./Router/revenueJournal.router"));
 
 app.listen(port, () => {
   console.log(`Le server est démarré sur le port: ${port}`);
