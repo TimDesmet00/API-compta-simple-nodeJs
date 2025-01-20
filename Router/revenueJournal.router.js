@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const revenueJournalController = require("../Controllers/revenueJournal.controller");
+const revenueJournalController = require("../Controllers/revenueJournal.controller.js");
 
 router.post("/add", revenueJournalController.createRevenueJournal);
 router.get("/getall", revenueJournalController.getAllRevenueJournal);

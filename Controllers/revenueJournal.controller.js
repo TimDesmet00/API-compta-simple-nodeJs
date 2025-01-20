@@ -1,4 +1,4 @@
-const RevenueJournal = require("../Models/revenueJournal.model");
+const RevenueJournal = require("../Models/revenueJournal.model.js");
 
 const createRevenueJournal = async (req, res) => {
   if (!req.body) {

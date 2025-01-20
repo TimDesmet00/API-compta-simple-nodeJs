@@ -122,3 +122,5 @@ const RevenueJournalSchema = new mongoose.Schema({
     },
   ],
 });
+
+module.exports = mongoose.model("revenueJournal", RevenueJournalSchema);
