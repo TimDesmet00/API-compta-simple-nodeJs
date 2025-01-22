@@ -43,7 +43,7 @@ const createClient = async (req, res) => {
 
 const getAllClients = async (req, res) => {
   try {
-    const clients = await Client.find().populate("factures");
+    const clients = await Client.find().populate("invoices");
     res.status(200).json({
       status: "success",
       results: clients.length,
@@ -62,7 +62,7 @@ const getAllClients = async (req, res) => {
 
 const getClientById = async (req, res) => {
   try {
-    const client = await Client.findById(req.params.id).populate("factures");
+    const client = await Client.findById(req.params.id).populate("invoices");
     res.status(200).json({
       status: "success",
       data: {
