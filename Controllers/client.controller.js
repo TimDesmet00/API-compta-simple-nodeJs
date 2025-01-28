@@ -45,6 +45,7 @@ const getAllClients = async (req, res) => {
   try {
     console.log("getAllClients");
     const clients = await Client.find().populate("invoices");
+    res.setHeader("Content-Type", "application/json");
     res.status(200).json({
       status: "success",
       results: clients.length,
