@@ -8,7 +8,7 @@ connectdb();
 const app = express();
 
 const corsOptions = {
-  origin: "http://127.0.0.1:8000/api", // Remplacez par l'origine que vous souhaitez autoriser
+  origin: "http://127.0.0.1:8000", // Remplacez par l'origine que vous souhaitez autoriser
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
