@@ -45,6 +45,7 @@ const getAllClients = async (req, res) => {
   try {
     console.log("getAllClients");
     const clients = await Client.find().populate("invoices");
+    console.log("clients", clients);
     res.setHeader("Content-Type", "application/json");
     res.status(200).json({
       status: "success",
@@ -53,7 +54,7 @@ const getAllClients = async (req, res) => {
         clients,
       },
     });
-    console.log("clients", clients);
+    // console.log("clients", clients);
   } catch (error) {
     console.error("Error retrieving clients", error);
     res.status(500).json({
