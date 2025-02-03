@@ -6,7 +6,7 @@ const createClient = async (req, res) => {
   console.log(req.body);
   // vérifier que la requête n'est pas vide
   if (!req.body) {
-    console.log(response);
+    console.log("Content can not be empty!");
     return res.status(400).send({
       message: "Content can not be empty!",
     });
