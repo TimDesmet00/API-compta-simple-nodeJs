@@ -3,14 +3,17 @@ const Facture = require("../Models/facture.model.js");
 const validator = require("validator");
 
 const createClient = async (req, res) => {
+  console.log(req.body);
   // vérifier que la requête n'est pas vide
   if (!req.body) {
+    console.log(response);
     return res.status(400).send({
       message: "Content can not be empty!",
     });
   }
   // Valider l'email
   if (req.body.email && !validator.isEmail(req.body.email)) {
+    console.log("Invalid email format");
     return res.status(400).json({
       status: "fail",
       message: "Invalid email format",
@@ -20,6 +23,7 @@ const createClient = async (req, res) => {
     // vérifier si le client existe déjà
     const existingClient = await Client.findOne({ email: req.body.email });
     if (existingClient) {
+      console.log("client already exists");
       return res.status(400).json({
         status: "fail",
         message: "Client already exists",
@@ -27,6 +31,7 @@ const createClient = async (req, res) => {
     }
     // Créer un nouveau client
     const client = await Client.create(req.body);
+    console.log("success");
     res.status(201).json({
       status: "success",
       data: {
@@ -34,6 +39,7 @@ const createClient = async (req, res) => {
       },
     });
   } catch (error) {
+    console.log("An error occurred while creating the client.", error);
     res.status(400).json({
       status: "fail",
       message: error.message || "An error occurred while creating the client.",
