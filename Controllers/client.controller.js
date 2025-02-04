@@ -6,14 +6,14 @@ const createClient = async (req, res) => {
   console.log(req.body);
   // vérifier que la requête n'est pas vide
   if (!req.body) {
-    console.log("Content can not be empty!");
+    // console.log("Content can not be empty!");
     return res.status(400).send({
       message: "Content can not be empty!",
     });
   }
   // Valider l'email
   if (req.body.email && !validator.isEmail(req.body.email)) {
-    console.log("Invalid email format");
+    // console.log("Invalid email format");
     return res.status(400).json({
       status: "fail",
       message: "Invalid email format",
@@ -23,7 +23,7 @@ const createClient = async (req, res) => {
     // vérifier si le client existe déjà
     const existingClient = await Client.findOne({ email: req.body.email });
     if (existingClient) {
-      console.log("client already exists");
+      // console.log("client already exists");
       return res.status(400).json({
         status: "fail",
         message: "Client already exists",
@@ -39,7 +39,7 @@ const createClient = async (req, res) => {
       },
     });
   } catch (error) {
-    console.log("An error occurred while creating the client.", error);
+    // console.log("An error occurred while creating the client.", error);
     res.status(400).json({
       status: "fail",
       message: error.message || "An error occurred while creating the client.",
@@ -49,11 +49,11 @@ const createClient = async (req, res) => {
 
 const getAllClients = async (req, res) => {
   try {
-    console.log("getAllClients is played");
+    // console.log("getAllClients is played");
     const clients = await Client.find().populate("invoices");
-    console.log("clients", clients);
+    // console.log("clients", clients);
     res.setHeader("Content-Type", "application/json");
-    console.log("Content-Type:", res.getHeader("Content-Type"));
+    // console.log("Content-Type:", res.getHeader("Content-Type"));
     res.status(200).json({
       status: "success",
       results: clients.length,
@@ -62,7 +62,7 @@ const getAllClients = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error("Error retrieving clients", error);
+    // console.error("Error retrieving clients", error);
     res.status(500).json({
       status: "fail",
       message: error.message || "An error occurred while retrieving clients.",
@@ -71,8 +71,11 @@ const getAllClients = async (req, res) => {
 };
 
 const getClientById = async (req, res) => {
+  console.log("getClientById is played");
+  console.log("req.params.id", req.params.id);
   try {
     const client = await Client.findById(req.params.id).populate("invoices");
+    console.log("client", client);
     res.status(200).json({
       status: "success",
       data: {
@@ -80,7 +83,7 @@ const getClientById = async (req, res) => {
       },
     });
   } catch (error) {
-    // console.error("Error retrieving client", error);
+    console.error("Error retrieving client", error);
     res.status(500).json({
       status: "fail",
       message: error.message || "An error occurred while retrieving client.",
