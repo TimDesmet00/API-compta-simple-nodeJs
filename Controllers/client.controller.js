@@ -71,11 +71,11 @@ const getAllClients = async (req, res) => {
 };
 
 const getClientById = async (req, res) => {
-  console.log("getClientById is played");
-  console.log("req.params.id", req.params.id);
+  // console.log("getClientById is played");
+  // console.log("req.params.id", req.params.id);
   try {
     const client = await Client.findById(req.params.id).populate("invoices");
-    console.log("client", client);
+    // console.log("client", client);
     res.status(200).json({
       status: "success",
       data: {
@@ -83,7 +83,7 @@ const getClientById = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error("Error retrieving client", error);
+    // console.error("Error retrieving client", error);
     res.status(500).json({
       status: "fail",
       message: error.message || "An error occurred while retrieving client.",
