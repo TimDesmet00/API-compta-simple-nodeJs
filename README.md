@@ -102,7 +102,4 @@ L'API expose plusieurs endpoints pour la gestion des clients, des factures, des 
 Le projet utilise un fichier `.env` pour stocker les variables d'environnement.  
 Voici un exemple de configuration :
 
-
-PORT=3000
-
 MONGO_URI=votre route mongoDB
