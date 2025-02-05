@@ -62,7 +62,6 @@ Actuellement, l'API est déployée uniquement en local.
 ### Installation et exécution
 Assurez-vous d'avoir [Node.js](https://nodejs.org/) et [MongoDB](https://www.mongodb.com/) installés sur votre machine.
 
-```sh
 # Cloner le projet
 git clone https://github.com/TimDesmet00/API-compta-simple-nodeJs.git
 cd API-compta-simple-nodeJs
