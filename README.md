@@ -85,7 +85,7 @@ npm run nodemon
 
 ## 📍 Routes de l'API
 
-L'API expose plusieurs endpoints pour la gestion des clients, des factures et des journaux.  
+L'API expose plusieurs endpoints pour la gestion des clients, des factures, des processus de facturation et des journaux de revenus.
 
 ### 📂 Gestion des clients (`/client`)
 | Méthode | Route            | Description                              |
@@ -102,21 +102,46 @@ L'API expose plusieurs endpoints pour la gestion des clients, des factures et de
 | `POST` | `/facture/add` | Ajouter une facture |
 | `GET` | `/facture/getall` | Récupérer toutes les factures |
 | `GET` | `/facture/getone/:id` | Récupérer une facture spécifique |
+| `GET` | `/facture/getclient/:id` | Récupérer les factures d'un client |
+| `GET` | `/facture/getuser/:id` | Récupérer les factures d'un utilisateur |
 | `PATCH` | `/facture/update/:id` | Modifier une facture |
 | `DELETE` | `/facture/delete/:id` | Supprimer une facture |
 
-### 📂 Autres services
-| Service | Route |
-|---------|-------------|
-| Traitement des factures entrantes | `/processInvoiceIn` |
-| Traitement des factures sortantes | `/processInvoiceOut` |
-| Journal des revenus | `/revenueJournal` |
+### 📂 Gestion des factures entrantes (`/processInvoiceIn`)
+| Méthode | Route | Description |
+|---------|-------|-------------|
+| `POST` | `/processInvoiceIn/add` | Ajouter une facture entrante |
+| `GET` | `/processInvoiceIn/getall` | Récupérer toutes les factures entrantes |
+| `GET` | `/processInvoiceIn/getone/:id` | Récupérer une facture entrante spécifique |
+| `PATCH` | `/processInvoiceIn/update/:id` | Modifier une facture entrante |
+| `PATCH` | `/processInvoiceIn/close/:id` | Mettre à jour et clôturer une facture entrante |
+| `DELETE` | `/processInvoiceIn/delete/:id` | Supprimer une facture entrante |
+
+### 📂 Gestion des factures sortantes (`/processInvoiceOut`)
+| Méthode | Route | Description |
+|---------|-------|-------------|
+| `POST` | `/processInvoiceOut/add` | Ajouter une facture sortante |
+| `GET` | `/processInvoiceOut/getall` | Récupérer toutes les factures sortantes |
+| `GET` | `/processInvoiceOut/getone/:id` | Récupérer une facture sortante spécifique |
+| `PATCH` | `/processInvoiceOut/update/:id` | Modifier une facture sortante |
+| `PATCH` | `/processInvoiceOut/close/:id` | Mettre à jour et clôturer une facture sortante |
+| `DELETE` | `/processInvoiceOut/delete/:id` | Supprimer une facture sortante |
+
+### 📂 Gestion du journal des revenus (`/revenueJournal`)
+| Méthode | Route | Description |
+|---------|-------|-------------|
+| `POST` | `/revenueJournal/add` | Ajouter une entrée dans le journal des revenus |
+| `GET` | `/revenueJournal/getall` | Récupérer toutes les entrées du journal des revenus |
+| `GET` | `/revenueJournal/getone/:date` | Récupérer une entrée spécifique du journal par date |
+| `PATCH` | `/revenueJournal/update/:date` | Modifier une entrée du journal des revenus |
+| `DELETE` | `/revenueJournal/delete/:date` | Supprimer une entrée du journal des revenus |
+
 
 ## 🛠 Configuration de l'environnement
 
 Le projet utilise un fichier `.env` pour stocker les variables d'environnement.  
 Voici un exemple de configuration :
 
-```env
+
 PORT=3000
-MONGO_URI=mongodb://localhost:27017/compta_simple
+MONGO_URI=votre route mongoDB
