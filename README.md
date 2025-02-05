@@ -1,43 +1,3 @@
-# API-compta-simple-nodeJs
-API Rest développer dans le cadre de mon projet de fin d'année pour ma formation en gestion de base et de l'entrainement en node.js 
-
-## Authors
-
-- [Tim Desmet](https://github.com/TimDesmet00)
-
-## Deployment
-
-local
-
-## Tech Stack
-
-Node.js
-
-## Route
-
-app.use("/client", require("./Router/client.router"));
-router.post("/add", clientController.createClient);
-router.get("/getall", clientController.getAllClients);
-router.get("/getone/:id", clientController.getClientById);
-router.patch("/update/:id", clientController.updateClient);
-router.delete("/delete/:id", clientController.deleteClient);
-
-
-app.use("/facture", require("./Router/facture.router"));
-
-
-app.use("/processInvoiceIn", require("./Router/processInvoiceIn.router"));
-
-
-app.use("/processInvoiceOut", require("./Router/processInvoiceOut.router"));
-
-
-app.use("/revenueJournal", require("./Router/revenueJournal.router"));
-
-
-
---------------------------------------------------------------------------------------------------
-
 # API Compta Simple - Node.js
 
 Cette API REST a été développée dans le cadre de mon projet de fin d'année pour ma formation en gestion de base et en développement backend avec Node.js.  
@@ -144,4 +104,5 @@ Voici un exemple de configuration :
 
 
 PORT=3000
+
 MONGO_URI=votre route mongoDB
