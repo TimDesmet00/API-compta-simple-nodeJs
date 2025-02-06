@@ -93,6 +93,7 @@ const getClientById = async (req, res) => {
 
 const updateClient = async (req, res) => {
   try {
+    // console.log("updateClient is played");
     // vérifier que la requête n'est pas vide
     if (req.body.email && !validator.isEmail(req.body.email)) {
       return res.status(400).json({
