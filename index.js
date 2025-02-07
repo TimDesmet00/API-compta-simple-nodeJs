@@ -20,6 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ajout des routes
+app.use("/society", require("./Router/society.router"));
 app.use("/client", require("./Router/client.router"));
 app.use("/facture", require("./Router/facture.router"));
 app.use("/processInvoiceIn", require("./Router/processInvoiceIn.router"));

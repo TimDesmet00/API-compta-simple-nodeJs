@@ -105,7 +105,7 @@ const getFactureByClient = async (req, res) => {
   }
 };
 
-const getFactureBysociety = async (req, res) => {
+const getFactureBySociety = async (req, res) => {
   try {
     const existingsociety = await society.findById(req.params.id);
     if (!existingsociety) {
@@ -201,7 +201,7 @@ module.exports = {
   getAllFactures,
   getFactureById,
   getFactureByClient,
-  getFactureBysociety,
+  getFactureBySociety,
   updateFacture,
   deleteFacture,
 };
