@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const MoiSchema = new mongoose.Schema({
+const societySchema = new mongoose.Schema({
   nom: {
     type: String,
     required: true,
@@ -45,4 +45,4 @@ const MoiSchema = new mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model("moi", MoiSchema);
+module.exports = mongoose.model("society", societySchema);

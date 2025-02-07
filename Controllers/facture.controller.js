@@ -1,6 +1,6 @@
 const facture = require("../Models/facture.model.js");
 const client = require("../Models/client.model.js");
-const user = require("../Models/user.model.js");
+const society = require("../Models/society.model.js");
 const validator = require("validator");
 
 const createFacture = async (req, res) => {
@@ -29,7 +29,10 @@ const createFacture = async (req, res) => {
 
 const getAllFactures = async (req, res) => {
   try {
-    const factures = await facture.find().populate("client").populate("user");
+    const factures = await facture
+      .find()
+      .populate("client")
+      .populate("society");
     res.status(200).json({
       status: "success",
       results: factures.length,
@@ -51,7 +54,7 @@ const getFactureById = async (req, res) => {
     const facture = await facture
       .findById(req.params.id)
       .populate("client")
-      .populate("user");
+      .populate("society");
     if (!facture) {
       return res.status(404).json({
         status: "fail",
@@ -86,7 +89,7 @@ const getFactureByClient = async (req, res) => {
     const factures = await facture
       .find({ client: req.params.id })
       .populate("client")
-      .populate("user");
+      .populate("society");
     res.status(200).json({
       status: "success",
       data: {
@@ -102,19 +105,19 @@ const getFactureByClient = async (req, res) => {
   }
 };
 
-const getFactureByUser = async (req, res) => {
+const getFactureBysociety = async (req, res) => {
   try {
-    const existingUser = await user.findById(req.params.id);
-    if (!existingUser) {
+    const existingsociety = await society.findById(req.params.id);
+    if (!existingsociety) {
       return res.status(404).json({
         status: "fail",
-        message: "User not found",
+        message: "society not found",
       });
     }
     const factures = await facture
-      .find({ user: req.params.id })
+      .find({ society: req.params.id })
       .populate("client")
-      .populate("user");
+      .populate("society");
     res.status(200).json({
       status: "success",
       data: {
@@ -198,7 +201,7 @@ module.exports = {
   getAllFactures,
   getFactureById,
   getFactureByClient,
-  getFactureByUser,
+  getFactureBysociety,
   updateFacture,
   deleteFacture,
 };
