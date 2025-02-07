@@ -49,3 +49,101 @@ const createSociety = async (req, res) => {
     });
   }
 };
+
+const getAllSocieties = async (req, res) => {
+  try {
+    const societies = await society.find();
+    res.status(200).json({
+      status: "success",
+      results: societies.length,
+      data: {
+        societies,
+      },
+    });
+  } catch (error) {
+    console.error("Error retrieving societies", error);
+    res.status(500).json({
+      status: "fail",
+      message: error.message || "An error occurred while retrieving societies.",
+    });
+  }
+};
+
+const getSocietyById = async (req, res) => {
+  try {
+    const society = await society.findById(req.params.id);
+    if (!society) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Society not found",
+      });
+    }
+    res.status(200).json({
+      status: "success",
+      data: {
+        society,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message:
+        error.message || "An error occurred while retrieving the society.",
+    });
+  }
+};
+
+const updateSociety = async (req, res) => {
+  try {
+    const society = await society.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!society) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Society not found",
+      });
+    }
+    res.status(200).json({
+      status: "success",
+      data: {
+        society,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message: error.message || "An error occurred while updating the society.",
+    });
+  }
+};
+
+const deleteSociety = async (req, res) => {
+  try {
+    const society = await society.findByIdAndDelete(req.params.id);
+    if (!society) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Society not found",
+      });
+    }
+    res.status(204).json({
+      status: "success",
+      data: null,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message: error.message || "An error occurred while deleting the society.",
+    });
+  }
+};
+
+module.exports = {
+  createSociety,
+  getAllSocieties,
+  getSocietyById,
+  updateSociety,
+  deleteSociety,
+};
