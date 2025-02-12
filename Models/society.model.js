@@ -1,31 +1,35 @@
 const mongoose = require("mongoose");
 
 const societySchema = new mongoose.Schema({
-  nom: {
+  name: {
     type: String,
     required: true,
   },
-  rue: {
+  street: {
     type: String,
     required: true,
   },
-  numero: {
+  number: {
     type: Number,
     required: true,
   },
-  cp: {
+  zipcode: {
     type: Number,
     required: true,
   },
-  ville: {
+  city: {
     type: String,
     required: true,
   },
-  tva: {
+  country: {
+    type: String,
+    required: true,
+  },
+  vat: {
     type: String,
     required: false,
   },
-  telephone: {
+  phone: {
     type: String,
     required: true,
   },
@@ -33,7 +37,7 @@ const societySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  banque: {
+  banq: {
     type: String,
     required: false,
   },

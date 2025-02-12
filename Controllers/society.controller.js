@@ -52,7 +52,7 @@ const createSociety = async (req, res) => {
 
 const getAllSocieties = async (req, res) => {
   try {
-    const societies = await society.find();
+    const societies = await society.find().populate("factures");
     res.status(200).json({
       status: "success",
       results: societies.length,
@@ -71,7 +71,7 @@ const getAllSocieties = async (req, res) => {
 
 const getSocietyById = async (req, res) => {
   try {
-    const society = await society.findById(req.params.id);
+    const society = await society.findById(req.params.id).populate("factures");
     if (!society) {
       return res.status(404).json({
         status: "fail",
@@ -95,10 +95,12 @@ const getSocietyById = async (req, res) => {
 
 const updateSociety = async (req, res) => {
   try {
-    const society = await society.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const society = await society
+      .findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true,
+      })
+      .populate("factures");
     if (!society) {
       return res.status(404).json({
         status: "fail",
