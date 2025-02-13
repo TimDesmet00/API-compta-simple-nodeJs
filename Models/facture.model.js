@@ -49,6 +49,14 @@ const FactureSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
+      totalHTVARaw: {
+        type: Number,
+        required: true,
+      },
+      totalTVARaw: {
+        type: Number,
+        required: true,
+      },
     },
   ],
 });
