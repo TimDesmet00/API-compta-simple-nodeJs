@@ -14,9 +14,9 @@ const FactureSchema = new mongoose.Schema({
     ref: "client",
     required: true,
   },
-  user: {
+  society: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+    ref: "society",
     required: true,
   },
   totalHT: {
