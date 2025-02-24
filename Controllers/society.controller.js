@@ -11,38 +11,51 @@ const createSociety = async (req, res) => {
   }
 
   try {
+    // console.log(req.body);
+
     if (!validator.isEmail(req.body.email)) {
+      console.log("Invalid email format");
       return res.status(400).json({
         status: "fail",
         message: "Please enter a valid email address",
       });
     }
     // vérifier si la société existe déjà
-    const existingSocietyByName = await society.findone({
+    const existingSocietyByName = await society.findOne({
       name: req.body.name,
     });
-    const existingSocietyByEmail = await society.findone({
+    // console.log("existing society by name", existingSocietyByName);
+
+    const existingSocietyByEmail = await society.findOne({
       email: req.body.email,
     });
-    const existingSocietyByVat = await society.findone({ vat: req.body.vat });
+    // console.log("existing society by email", existingSocietyByEmail);
+
+    const existingSocietyByVat = await society.findOne({ vat: req.body.vat });
+    console.log("existing society by vat", existingSocietyByVat);
+
     if (
       existingSocietyByName ||
       existingSocietyByEmail ||
       existingSocietyByVat
     ) {
+      // console.log("A society already exists");
+
       return res.status(400).json({
         status: "fail",
         message: "A society already exists",
       });
     }
-    const society = await society.create(req.body);
+    const newSociety = await society.create(req.body);
+    console.log("Society created", newSociety);
     res.status(201).json({
       status: "success",
       data: {
-        society,
+        society: newSociety,
       },
     });
   } catch (error) {
+    // console.error("Error creating society", error);
     res.status(400).json({
       status: "fail",
       message: error.message || "An error occurred while creating the society.",
