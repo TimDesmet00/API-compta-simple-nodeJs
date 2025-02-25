@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const societySchema = new mongoose.Schema({
+const SocietySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -49,4 +49,4 @@ const societySchema = new mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model("society", societySchema);
+module.exports = mongoose.model("Society", SocietySchema);

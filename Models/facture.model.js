@@ -11,12 +11,12 @@ const FactureSchema = new mongoose.Schema({
   },
   client: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "client",
+    ref: "Client",
     required: true,
   },
   society: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "society",
+    ref: "Society",
     required: true,
   },
   totalHTVA: {
