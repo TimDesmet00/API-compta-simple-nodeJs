@@ -19,7 +19,7 @@ const FactureSchema = new mongoose.Schema({
     ref: "society",
     required: true,
   },
-  totalHT: {
+  totalHTVA: {
     type: Number,
     required: true,
   },
@@ -45,7 +45,7 @@ const FactureSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
-      tva: {
+      vat: {
         type: Number,
         required: true,
       },
